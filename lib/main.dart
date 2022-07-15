@@ -20,8 +20,7 @@ class MyApp extends StatelessWidget {
         '/main_screen': (context) => const MainScreenWidget(),
         '/register': (context) => const MainRegisterWidget(),
         '/reset_password': (context) => const MainResetPasswordWidget(),
-        '/main_screen/movie_details': (context)  => const MovieDetailsWidget()
-        
+        '/main_screen/movie_details': (context)  => const MovieDetailsWidget()      
       },
       initialRoute: '/',
       onGenerateRoute: (RouteSettings settings){
