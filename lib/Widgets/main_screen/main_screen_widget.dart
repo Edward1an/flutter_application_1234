@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1234/Widgets/main_screen/main_theme.dart';
 import 'package:flutter_application_1234/Widgets/movie_list/movie_list_widget.dart';
+
+import '../movie_details/movie_details_widget.dart';
 class MainScreenWidget extends StatefulWidget {
   const MainScreenWidget({Key? key}) : super(key: key);
 
@@ -9,7 +11,7 @@ class MainScreenWidget extends StatefulWidget {
 }
 
 class _MainScreenWidgetState extends State<MainScreenWidget> {
-  int _currentIndex = 0;
+  int _currentIndex = 1;
   void changeselTab(int index ){
     if(_currentIndex == index) return;
     setState((){

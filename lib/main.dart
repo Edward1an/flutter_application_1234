@@ -20,7 +20,9 @@ class MyApp extends StatelessWidget {
         '/main_screen': (context) => const MainScreenWidget(),
         '/register': (context) => const MainRegisterWidget(),
         '/reset_password': (context) => const MainResetPasswordWidget(),
-        '/m': (context)  => const MovieDetailsWidget()      
+        '/m': (context)  {
+          final id = ModalRoute.of(context)!.settings.arguments as int;
+           return  MovieDetailsWidget(movieId: id,);}       
       },
       initialRoute: '/',
       onGenerateRoute: (RouteSettings settings){

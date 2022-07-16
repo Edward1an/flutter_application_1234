@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MovieDetailsWidget extends StatefulWidget {
-
-  const MovieDetailsWidget({Key? key}) : super(key: key);
+final int movieId;
+  const MovieDetailsWidget({Key? key, required this.movieId}) : super(key: key);
 
   @override
 
@@ -13,8 +13,11 @@ class _MovieDetailsWidgetState extends State<MovieDetailsWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('film'),
+      ),
       body: Container(
-        color: Colors.amber,
+        color: Colors.red,
       ),
     );
   }
