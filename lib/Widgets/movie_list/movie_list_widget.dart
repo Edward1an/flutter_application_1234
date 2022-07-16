@@ -57,7 +57,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
   }
   void _onMovieTab(int index){
     final id = _movies[index].id;
-    Navigator.pushNamed(context, "/m", arguments: id);
+    Navigator.of(context).pushNamed( "/m", arguments: id);
   }
   @override
   Widget build(BuildContext context) {
