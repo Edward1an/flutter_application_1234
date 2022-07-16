@@ -12,8 +12,10 @@ class MovieDetailsWidget extends StatefulWidget {
 class _MovieDetailsWidgetState extends State<MovieDetailsWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.amber,
+    return Scaffold(
+      body: Container(
+        color: Colors.amber,
+      ),
     );
   }
 }
