@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
-class SearchWidget extends StatelessWidget {
-  const SearchWidget({Key? key}) : super(key: key);
+import '../../states/movies_state.dart';
 
+class SearchWidget extends StatelessWidget {
+  const SearchWidget({Key? key, required this.state}) : super(key: key);
+  final MoviesState state;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: TextField(
-        // controller: _searchController,
+        onChanged: (value) => state.onSearchChanged(value),
         decoration: InputDecoration(
             hintText: 'write your film',
             labelText: 'Search',

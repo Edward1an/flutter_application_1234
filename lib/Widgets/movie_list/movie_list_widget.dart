@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, must_be_immutable
 
-import 'package:flutter_application_1234/Widgets/app_images/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1234/states/movies_state.dart';
 
@@ -8,10 +7,33 @@ import '../../models/movie.dart';
 import 'movies_widget.dart';
 import 'search_widget.dart';
 
-class MovieListWidget extends StatelessWidget {
-  MovieListWidget({Key? key, required this.state}) : super(key: key);
+class MovieListWidget extends StatefulWidget {
+  const MovieListWidget({Key? key, required this.state}) : super(key: key);
   final MoviesState state;
-  late Future<List<Movie>> futureMovies = state.getMovies();
+
+  @override
+  State<MovieListWidget> createState() => _MovieListWidgetState();
+}
+
+class _MovieListWidgetState extends State<MovieListWidget> {
+  late Future<List<Movie>> futureMovies;
+  void _update() => setState(() {
+        print('Обновился стейт');
+        futureMovies = widget.state.getMovies();
+      });
+
+  @override
+  void initState() {
+    super.initState();
+    futureMovies = widget.state.getMovies();
+    widget.state.addListener(_update);
+  }
+
+  @override
+  void dispose() {
+    widget.state.removeListener(_update);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +59,9 @@ class MovieListWidget extends StatelessWidget {
             }
           },
         ),
-        SearchWidget(),
+        SearchWidget(
+          state: widget.state,
+        ),
       ],
     );
   }

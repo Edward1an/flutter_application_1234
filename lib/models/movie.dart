@@ -12,4 +12,7 @@ class Movie {
     required this.time,
     required this.description,
   });
+
+  @override
+  String toString() => 'Movie(id: $id, title: $title)';
 }

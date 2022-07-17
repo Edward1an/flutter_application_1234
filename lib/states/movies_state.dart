@@ -1,8 +1,10 @@
+import 'package:flutter/foundation.dart';
+
 import '../Widgets/app_images/app_images.dart';
 import '../models/movie.dart';
 
-class MoviesState {
-  final _movies = [
+class MoviesState extends ChangeNotifier {
+  final _allMovies = [
     Movie(
       id: 1,
       imageName: AppImages.warcraft,
@@ -50,7 +52,35 @@ class MoviesState {
             '3,000 years ago, a warlord named Yaotl opens a portal into a parallel universe. The portal\'s energies grant Yaotl and his four sibling generals immortality, but the generals are turned to stone. The portal also releases 13 immortal monsters that destroy his army and his enemies while becoming the famous mythical monsters of legend as the centuries pass.')
   ];
 
+  var _currentMovies = <Movie>[];
+
   Future<List<Movie>> getMovies() {
-    return Future.value([..._movies]);
+    if (_currentMovies.isEmpty) {
+      _currentMovies = [..._allMovies];
+    }
+    print('Отображаем: $_currentMovies');
+    return Future.value(_currentMovies);
+  }
+
+  void onSearchChanged(String text) {
+    final searchText = text.trim();
+    if (searchText.isEmpty) {
+      _currentMovies.clear();
+      _setState(() {
+        print('Очистили поиск');
+      });
+      return;
+    }
+    final searchMovies =
+        _allMovies.where((m) => m.title.startsWith(searchText)).toList();
+    _setState(() {
+      _currentMovies = searchMovies;
+      print('Нашли: $searchMovies');
+    });
+  }
+
+  void _setState(VoidCallback callback) {
+    callback();
+    notifyListeners();
   }
 }
