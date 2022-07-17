@@ -1,6 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1234/Widgets/main_screen/main_theme.dart';
 import 'package:flutter_application_1234/Widgets/movie_list/movie_list_widget.dart';
+import 'package:flutter_application_1234/states/movies_state.dart';
 
 import '../movie_details/movie_details_widget.dart';
 
@@ -13,60 +16,64 @@ class MainScreenWidget extends StatefulWidget {
 
 class _MainScreenWidgetState extends State<MainScreenWidget> {
   int _currentIndex = 1;
-  void changeselTab(int index ){
-    if(_currentIndex == index) return;
-    setState((){
+  void changeselTab(int index) {
+    if (_currentIndex == index) return;
+    setState(() {
       _currentIndex = index;
     });
-
   }
+
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
         theme: OurAppTheme.x,
         routes: {
-         '/m': (context)  {
-          final id = ModalRoute.of(context)!.settings.arguments as int;
-           return MovieDetailsWidget(movieId: id,);},},
-      home: Scaffold(
-
-      appBar: AppBar(
-        title: const Text('hi'),
-      ),
-      
-      body: IndexedStack(
-        index: _currentIndex,
-        children: const [
-    NewsWidget(),
-    MovieListWidget(),
-    Center(child: Text('TV Shows')),
-],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index){
-          changeselTab(index);
+          '/m': (context) {
+            final id = ModalRoute.of(context)!.settings.arguments as int;
+            return MovieDetailsWidget(
+              movieId: id,
+            );
+          },
         },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home,),
-            label: 'News',
-            //activeIcon: FilmsWidget()
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text('hi'),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.video_call_outlined),
-            label: 'films',
+          body: IndexedStack(
+            index: _currentIndex,
+            children: [
+              NewsWidget(),
+              MovieListWidget(
+                state: MoviesState(),
+              ),
+              Center(child: Text('TV Shows')),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.tv_rounded),
-            label: 'tv shows',
-              //activeIcon: TVShowsWidget()
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: _currentIndex,
+            onTap: (index) {
+              changeselTab(index);
+            },
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                ),
+                label: 'News',
+                //activeIcon: FilmsWidget()
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.video_call_outlined),
+                label: 'films',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.tv_rounded),
+                label: 'tv shows',
+                //activeIcon: TVShowsWidget()
+              ),
+            ],
           ),
-        ],
-      ),
-    )
-    );
+        ));
   }
 }
 
@@ -83,6 +90,7 @@ class _NewsWidgetState extends State<NewsWidget> {
     return const Center(child: Text('News'));
   }
 }
+
 class TVShowsWidget extends StatelessWidget {
   const TVShowsWidget({Key? key}) : super(key: key);
 
