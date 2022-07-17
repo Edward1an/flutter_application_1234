@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1234/Widgets/main_screen/main_theme.dart';
 import 'package:flutter_application_1234/Widgets/movie_list/movie_list_widget.dart';
+import 'package:flutter_application_1234/data/file_movies_repository.dart';
 import 'package:flutter_application_1234/states/movies_state.dart';
 
 import '../movie_details/movie_details_widget.dart';
@@ -44,7 +45,12 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
             children: [
               NewsWidget(),
               MovieListWidget(
-                state: MoviesState(),
+                state: MoviesState(
+                  repository: FileMoviesRepository(
+                    context: context,
+                    jsonFile: 'assets/movies.json',
+                  ),
+                ),
               ),
               Center(child: Text('TV Shows')),
             ],
