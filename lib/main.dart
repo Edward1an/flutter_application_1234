@@ -4,6 +4,7 @@ import 'package:flutter_application_1234/Widgets/main_screen/main_screen_widget.
 import 'package:flutter_application_1234/Widgets/register/register_widget.dart';
 import 'package:flutter_application_1234/Widgets/reset_password/reset_widget.dart';
 import 'package:flutter_application_1234/Widgets/main_screen/main_theme.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -19,11 +20,8 @@ class MyApp extends StatelessWidget {
         '/main_screen': (context) => const MainScreenWidget(),
         '/register': (context) => const MainRegisterWidget(),
         '/reset_password': (context) => const MainResetPasswordWidget(),
-       
       },
       initialRoute: '/',
-      
-    
     );
   }
 }

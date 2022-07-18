@@ -18,7 +18,6 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
     setState((){
       _currentIndex = index;
     });
-
   }
   @override
   Widget build(BuildContext context) {
@@ -26,12 +25,11 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
     return MaterialApp(
         theme: OurAppTheme.x,
         routes: {
-         '/m': (context)  {
+         '/main_screen/movie_details_widget': (context)  {
           final id = ModalRoute.of(context)!.settings.arguments as int;
            return MovieDetailsWidget(movieId: id,);},},
       home: Scaffold(
-
-      appBar: AppBar(
+        appBar: AppBar(
         title: const Text('hi'),
       ),
       
