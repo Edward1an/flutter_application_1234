@@ -3,6 +3,7 @@ import 'package:flutter_application_1234/Widgets/main_screen/main_theme.dart';
 import 'package:flutter_application_1234/Widgets/movie_list/movie_list_widget.dart';
 
 import '../movie_details/movie_details_widget.dart';
+import '../register/register_widget.dart';
 
 class MainScreenWidget extends StatefulWidget {
   const MainScreenWidget({Key? key}) : super(key: key);
@@ -26,8 +27,10 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
         theme: OurAppTheme.x,
         routes: {
          '/main_screen/movie_details_widget': (context)  {
-          final id = ModalRoute.of(context)!.settings.arguments as int;
-           return MovieDetailsWidget(movieId: id,);},},
+          final arguments = ModalRoute.of(context)!.settings.arguments;
+          if(arguments is int){return MovieDetailsWidget(movieId: arguments,);}
+          else {return const MainRegisterWidget();}}},
+           
       home: Scaffold(
         appBar: AppBar(
         title: const Text('hi'),

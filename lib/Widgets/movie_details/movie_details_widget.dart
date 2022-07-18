@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1234/Widgets/movie_details/movie_details_main_info.dart';
 
 class MovieDetailsWidget extends StatefulWidget {
 final int movieId;
@@ -12,11 +13,14 @@ class _MovieDetailsWidgetState extends State<MovieDetailsWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('film'),
+        title: const Text('waric'),
       ),
-      body: Container(
-        color: Colors.red,
-      ),
+      body: ListView(
+        children:  [
+          const MovieMainWidget(),
+          Container(color: Colors.black, height: 300,)
+        ],
+      )
     );
   }
 }
