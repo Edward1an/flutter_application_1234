@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1234/Widgets/auth/login.dart';
 import 'package:flutter_application_1234/Widgets/main_screen/main_screen_widget.dart';
-import 'package:flutter_application_1234/Widgets/movie_details/movie_details_widget.dart';
 import 'package:flutter_application_1234/Widgets/register/register_widget.dart';
 import 'package:flutter_application_1234/Widgets/reset_password/reset_widget.dart';
 import 'package:flutter_application_1234/Widgets/main_screen/main_theme.dart';
