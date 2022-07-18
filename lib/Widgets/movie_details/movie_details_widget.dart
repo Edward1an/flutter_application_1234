@@ -15,11 +15,13 @@ class _MovieDetailsWidgetState extends State<MovieDetailsWidget> {
       appBar: AppBar(
         title: const Text('waric'),
       ),
-      body: ListView(
-        children:  [
-          const MovieMainWidget(),
-          Container(color: Colors.black, height: 300,)
-        ],
+      body: ColoredBox(
+        color: const Color.fromRGBO(25, 24, 27, 1.0),
+        child: ListView(
+          children:  const [
+            MovieMainWidget(),
+          ],
+        ),
       )
     );
   }
