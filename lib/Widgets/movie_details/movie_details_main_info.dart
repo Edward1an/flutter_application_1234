@@ -68,11 +68,16 @@ class _MovieScoreWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-         TextButton(onPressed: (){}, child: Row(
-           children: const [
-            MyDrawWidget(),
-            Text(' User Scores'),
-           ],
+         TextButton(onPressed: (){}, child: SizedBox(
+          height: 50,
+          width: 200,
+           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+             children: const [
+              MyDrawWidget(),
+              Text(' User Scores'),
+             ],
+           ),
          )),
         Container(
           color: Colors.grey,

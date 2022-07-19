@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1234/Widgets/main_screen/main_theme.dart';
 import 'package:flutter_application_1234/Widgets/movie_list/movie_list_widget.dart';
-
 import '../movie_details/movie_details_widget.dart';
 import '../register/register_widget.dart';
 

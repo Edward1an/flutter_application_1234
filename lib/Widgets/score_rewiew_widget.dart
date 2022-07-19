@@ -6,14 +6,17 @@ class MyDrawWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double a = 100;
     return CustomPaint(
-      painter: MyPainter()
+      size: const Size(a,a),
+      painter: MyPainter(),
+      child: const Center(child: Text('${0.34 * 100}%', style: TextStyle(fontSize: 10),)),
     );
   }
 }
 
 class MyPainter extends CustomPainter{
-  final int persent= 34;
+  final double persent= 0.34;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -27,12 +30,15 @@ class MyPainter extends CustomPainter{
   final persentPaint = Paint();
   persentPaint.color = Colors.orange;
   persentPaint.strokeCap = StrokeCap.round;
-  persentPaint.strokeWidth = forePaint.strokeWidth;
+  persentPaint.strokeWidth = 5;
+  persentPaint.style = PaintingStyle.stroke;
+  canvas.drawOval(Offset.zero & size, backPaint);
+
   canvas.drawArc(const Offset(5.5, 5.5) & Size(size.width - 11, size.height - 11), 
-  -pi/2 + pi * 2 * persent, 2 * pi - (100 - persent), false, backPaint);
+  -pi/2 + pi * 2 * persent, 2 * pi - (1.0 - persent), false, forePaint);
+
   canvas.drawArc(const Offset(5.5, 5.5) & Size(size.width - 11, size.height - 11), 
   -pi/2, 2 * pi * persent, false, persentPaint);
-  canvas.drawOval(Offset.zero & size, backPaint);
   }
 
   @override
