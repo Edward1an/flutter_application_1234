@@ -26,8 +26,7 @@ class MovieActorsWidget extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Container(
-                    clipBehavior: Clip.hardEdge,
+                  child: DecoratedBox(
                     decoration: BoxDecoration(
                     border: Border.all(
                       color: Colors.black.withOpacity(0.2),
@@ -43,34 +42,38 @@ class MovieActorsWidget extends StatelessWidget {
                       )
                     ]
                     ),
-                    child: Stack(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children:  [
-                            const Image(image: AppImages.warcraft),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Text('Actor', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),),
-                                  SizedBox(height: 10,),
-                                  Text('actors description and role',style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
-                                  SizedBox(height: 10,),
-                                  Text('Episodes',style: TextStyle(fontSize: 11, fontWeight: FontWeight.w400, color: Colors.grey),)                            
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                        Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                       borderRadius:  const BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
-                      onTap:() {}))
-                      ,
-                      ],
+                    child: ClipRRect(
+                      clipBehavior: Clip.hardEdge,
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                      child: Stack(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children:  [
+                              const Image(image: AppImages.warcraft),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text('Actor', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),),
+                                    SizedBox(height: 10,),
+                                    Text('actors description and role',style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
+                                    SizedBox(height: 10,),
+                                    Text('Episodes',style: TextStyle(fontSize: 11, fontWeight: FontWeight.w400, color: Colors.grey),)                            
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                          Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                         borderRadius:  const BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
+                        onTap:() {}))
+                        ,
+                        ],
+                      ),
                     ),
                   ),
                 );
